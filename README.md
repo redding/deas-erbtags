@@ -1,10 +1,48 @@
 # DeasTags
 
-TODO: Write a gem description
+Template helpers for creating basic html tags.
 
 ## Usage
 
-TODO: Write code samples and usage instructions here
+```ruby
+require 'deas-tags'
+
+class MyDeasServer
+  include Deas::Server
+
+  # ...
+
+  template_helpers(Deas::Tags) # include them all
+
+  # OR just include some...
+
+  template_helpers(Deas::Tags::LinkTo)
+  template_helpers(Deas::Tags::ImageTag)
+
+  # ...
+
+end
+```
+
+## Tags
+
+TODO: talk about basic `tag` method
+
+### LinkTo
+
+TODO
+
+### MailTo
+
+TODO
+
+### ImageTag
+
+TODO
+
+### FormTags
+
+TODO
 
 ## Installation
 
