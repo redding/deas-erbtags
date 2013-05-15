@@ -5,7 +5,7 @@ require "deas-tags/version"
 
 Gem::Specification.new do |gem|
   gem.name        = "deas-tags"
-  gem.version     = DeasTags::VERSION
+  gem.version     = Deas::Tags::VERSION
   gem.authors     = ["Kelly Redding", "Collin Redding"]
   gem.email       = ["kelly@kellyredding.com", "collin.redding@me.com"]
   gem.description = %q{Deas template helpers for creating common HTML tags}
