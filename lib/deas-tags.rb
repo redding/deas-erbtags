@@ -1,5 +1,5 @@
-require "deas-tags/version"
+require 'deas-tags/version'
+require 'deas-tags/tag'
 
-module DeasTags
-  # TODO: your code goes here...
-end
+module Deas; end
+module Deas::Tags; end
