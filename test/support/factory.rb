@@ -1,17 +1,17 @@
-require 'deas-tags/utils'
-require 'deas-tags/tag'
+require 'deas-erbtags/utils'
+require 'deas-erbtags/tag'
 
 module Factory
 
   def self.tags_template
     template_class = Class.new do
-      include Deas::Tags::Tag
+      include Deas::ErbTags::Tag
     end
     template_class.new
   end
 
   def self.html_attrs(opts)
-    Deas::Tags::Utils.html_attrs(opts)
+    Deas::ErbTags::Utils.html_attrs(opts)
   end
 
 end

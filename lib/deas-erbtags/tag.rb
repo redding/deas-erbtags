@@ -1,6 +1,6 @@
-require 'deas-tags/utils'
+require 'deas-erbtags/utils'
 
-module Deas::Tags
+module Deas::ErbTags
 
   module Tag
 

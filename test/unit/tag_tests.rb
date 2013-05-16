@@ -1,7 +1,7 @@
 require 'assert'
-require 'deas-tags/tag'
+require 'deas-erbtags/tag'
 
-module Deas::Tags::Tag
+module Deas::ErbTags::Tag
 
   class BaseTests < Assert::Context
     desc "the basic tag method"
