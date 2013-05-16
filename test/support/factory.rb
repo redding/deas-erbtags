@@ -3,9 +3,9 @@ require 'deas-erbtags/tag'
 
 module Factory
 
-  def self.tags_template
+  def self.template(*included_modules)
     template_class = Class.new do
-      include Deas::ErbTags::Tag
+      include *included_modules
     end
     template_class.new
   end
