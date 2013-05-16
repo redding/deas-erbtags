@@ -1,4 +1,4 @@
-# DeasTags
+# Deas::Tags
 
 Template helpers for creating basic html tags.
 
@@ -26,7 +26,12 @@ end
 
 ## Tags
 
-TODO: talk about basic `tag` method
+All helpers are based off of the basic `tag` helper:
+
+```ruby
+tag(:br)                             # => <br />
+tag(:h1, 'shizam', :title => "boom") # => <h1 title="boom">shizam</h1>
+```
 
 ### LinkTo
 
