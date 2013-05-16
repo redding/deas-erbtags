@@ -9,7 +9,7 @@ module Deas::ErbTags::Tag
       @opts = { :class => 'big', :id => '1234' }
       @content = "Loud Noises"
       @opts_attrs = Factory.html_attrs(@opts)
-      @template = Factory.tags_template
+      @template = Factory.template(Deas::ErbTags::Tag)
     end
     subject{ @template }
 

@@ -1,7 +1,6 @@
 require 'deas-erbtags/utils'
 
 module Deas::ErbTags
-
   module Tag
 
     def tag(name, *args)
@@ -15,5 +14,4 @@ module Deas::ErbTags
     end
 
   end
-
 end
