@@ -1,5 +1,5 @@
 module Deas; end
-module Deas::Tags
+module Deas::ErbTags
 
   module Utils
 

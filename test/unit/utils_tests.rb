@@ -1,16 +1,16 @@
 require "assert"
-require 'deas-tags/utils'
+require 'deas-erbtags/utils'
 
-module Deas::Tags::Utils
+module Deas::ErbTags::Utils
 
   class BaseTests < Assert::Context
-    desc 'Deas::Tags::Helpers'
-    subject { Deas::Tags::Utils }
+    desc 'Deas::ErbTags::Helpers'
+    subject { Deas::ErbTags::Utils }
 
     should have_imeths :html_attrs, :escape_attr_value
 
-    should "alias itself as `Deas::Tags::U`" do
-      assert_same Deas::Tags::Utils, Deas::Tags::U
+    should "alias itself as `Deas::ErbTags::U`" do
+      assert_same Deas::ErbTags::Utils, Deas::ErbTags::U
     end
 
   end

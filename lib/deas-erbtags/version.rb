@@ -1,4 +1,4 @@
 module Deas; end
-module Deas::Tags
+module Deas::ErbTags
   VERSION = "0.0.1"
 end

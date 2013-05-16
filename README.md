@@ -1,23 +1,23 @@
-# Deas::Tags
+# Deas::ErbTags
 
-Template helpers for creating basic html tags.
+Template helpers for creating html tags using Erb (or Erubis, etc).
 
 ## Usage
 
 ```ruby
-require 'deas-tags'
+require 'deas-erbtags'
 
 class MyDeasServer
   include Deas::Server
 
   # ...
 
-  template_helpers(Deas::Tags) # include them all
+  template_helpers(Deas::ErbTags) # include them all
 
   # OR just include some...
 
-  template_helpers(Deas::Tags::LinkTo)
-  template_helpers(Deas::Tags::ImageTag)
+  template_helpers(Deas::ErbTags::LinkTo)
+  template_helpers(Deas::ErbTags::ImageTag)
 
   # ...
 
@@ -53,7 +53,7 @@ TODO
 
 Add this line to your application's Gemfile:
 
-    gem 'deas-tags'
+    gem 'deas-erbtags'
 
 And then execute:
 
@@ -61,7 +61,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install deas-tags
+    $ gem install deas-erbtags
 
 ## Contributing
 
