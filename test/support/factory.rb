@@ -1,3 +1,4 @@
+require 'deas-tags/utils'
 require 'deas-tags/tag'
 
 module Factory
@@ -7,6 +8,10 @@ module Factory
       include Deas::Tags::Tag
     end
     template_class.new
+  end
+
+  def self.html_attrs(opts)
+    Deas::Tags::Utils.html_attrs(opts)
   end
 
 end
