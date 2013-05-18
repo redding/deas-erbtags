@@ -7,8 +7,8 @@ module Deas::ErbTags::Tag
     desc "the basic tag method"
     setup do
       @opts = { :class => 'big', :id => '1234' }
-      @content = "Loud Noises"
       @opts_attrs = Factory.html_attrs(@opts)
+      @content = "Loud Noises"
       @template = Factory.template(Deas::ErbTags::Tag)
     end
     subject{ @template }
