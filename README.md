@@ -35,9 +35,12 @@ tag(:h1, 'shizam', :title => "boom") # => <h1 title="boom">shizam</h1>
 
 **Note**: all tag methods take an option hash of html attributes (like above).  This use-case is assumed in the examples below.
 
-### LinkTo
+### `link_to`
 
-TODO
+```ruby
+link_to "http://google.com"           # => <a href="http://google.com">http://google.com</a>
+link_to "google", "http://google.com" # => <a href="http://google.com">google</a>
+```
 
 ### MailTo
 
