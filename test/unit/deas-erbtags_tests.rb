@@ -14,7 +14,7 @@ module Deas::ErbTags
 
     should "include all of the individual modules" do
       exp_modules = [
-        Tag, LinkTo, MailTo, ImageTag
+        Tag, CaptureTag, LinkTo, MailTo, ImageTag
       ]
 
       exp_modules.each do |m|
