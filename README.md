@@ -46,9 +46,11 @@ link_to "google", "http://google.com" # => <a href="http://google.com">google</a
 
 TODO
 
-### ImageTag
+### `image_tag`
 
-TODO
+```ruby
+image_tag '/logo.jpg'   #  => <img src="/logo.jpg" />
+```
 
 ### FormTags
 
