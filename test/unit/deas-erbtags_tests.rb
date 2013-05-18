@@ -10,11 +10,11 @@ module Deas::ErbTags
     end
     subject{ @template }
 
-    should have_imeths :tag, :link_to, :image_tag
+    should have_imeths :tag, :link_to, :mail_to, :image_tag
 
     should "include all of the individual modules" do
       exp_modules = [
-        Tag, LinkTo, ImageTag
+        Tag, LinkTo, MailTo, ImageTag
       ]
 
       exp_modules.each do |m|

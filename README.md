@@ -26,7 +26,7 @@ end
 
 ## Tags
 
-All helpers are based off of the basic `tag` helper:
+All helpers are based off of the basic `tag` method:
 
 ```ruby
 tag(:br)                             # => <br />
@@ -42,14 +42,23 @@ link_to "http://google.com"           # => <a href="http://google.com">http://go
 link_to "google", "http://google.com" # => <a href="http://google.com">google</a>
 ```
 
-### MailTo
+### `mail_to`
 
-TODO
+```ruby
+mail_to "me@domain.com"
+  # => <a href="mailto:me@domain.com">me@domain.com</a>
+
+mail_to "me@domain.com", :at => "_at_", :dot => "_dot_"
+  # => <a href="mailto:me@domain.com">me_at_domain_dot_com</a>
+
+mail_to "me@domain.com", :disabled => true
+  # => me@domain.com
+```
 
 ### `image_tag`
 
 ```ruby
-image_tag '/logo.jpg'   #  => <img src="/logo.jpg" />
+image_tag '/logo.jpg'  #  => <img src="/logo.jpg" />
 ```
 
 ### FormTags
