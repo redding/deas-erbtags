@@ -24,16 +24,29 @@ class MyDeasServer
 end
 ```
 
-## Tags
+## Methods
 
-All helpers are based off of the basic `tag` method:
+All helper methods are based off of the basic `tag` method.  Tag calls should be invoked with `<%= ... -%>`:
 
-```ruby
-tag(:br)                             # => <br />
-tag(:h1, 'shizam', :title => "boom") # => <h1 title="boom">shizam</h1>
+```erb
+<%= tag(:br) -%>                             # => <br />
+<%= tag(:h1, 'shizam', :title => "boom") -%> # => <h1 title="boom">shizam</h1>
 ```
 
 **Note**: all tag methods take an option hash of html attributes (like above).  This use-case is assumed in the examples below.
+
+### `capture_tag`
+
+The `capture_tag` method is used to create tags with nested erb markup.  Like the `tag` method, it creates other tags with a similar API.  Unlike the `tag` method, it takes a block that contains nested markup and does not take content as an arg.  Capture tags should be invoked with the `<% ... %>`:
+
+```erb
+<% content_tag(:div, :id => 'outer') do %>
+  <%= tag(:div, 'inner') -%>
+<% end %>
+  # => <div id="outer">\n  <div>inner</div>\n</div>\n
+```
+
+**Note**: the convention is that if a tag method is called with a block, `capture_tag` will be used to generate the tag and it should be invoked with `<% ... %>`.
 
 ### `link_to`
 
