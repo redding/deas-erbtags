@@ -1,5 +1,6 @@
 require 'assert'
 require 'deas-erbtags/tag'
+require 'deas-erbtags/capture_tag'
 require 'deas-erbtags/link_to'
 
 module Deas::ErbTags::LinkTo
@@ -15,6 +16,10 @@ module Deas::ErbTags::LinkTo
 
     should "include the `Tag` module" do
       assert_includes Deas::ErbTags::Tag, subject.class.included_modules
+    end
+
+    should "include the `CaptureTag` module" do
+      assert_includes Deas::ErbTags::CaptureTag, subject.class.included_modules
     end
 
     should "create an anchor tag with no content or href" do
@@ -41,6 +46,13 @@ module Deas::ErbTags::LinkTo
         :id => 'google_link'
       })
       assert_equal href_content_opts, link_to
+    end
+
+    should "create an anchor tag with an href and captured content" do
+      span = subject.tag(:span, 'google')
+      exp = subject.tag(:a, "\n#{span}\n", {:href => 'www.google.com'}) + "\n"
+
+      assert_equal exp, subject.link_to('www.google.com'){ span }
     end
 
   end
