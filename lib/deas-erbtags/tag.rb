@@ -10,7 +10,7 @@ module Deas::ErbTags
       ]
       attrs = U.html_attrs(opts)
 
-      "<#{name}#{attrs}#{content ? ">#{content}</#{name}" : ' /'}>"
+      "<#{name}#{attrs}#{content.nil? ? ' /' : ">#{content}</#{name}"}>"
     end
 
   end
