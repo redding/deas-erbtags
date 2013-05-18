@@ -3,6 +3,16 @@ module Deas::ErbTags
 
   module Utils
 
+    ESCAPE_ATTRS = {
+      "&" => "&amp;",
+      "<" => "&lt;",
+      '"' => "&quot;"
+    }
+    ESCAPE_ATTRS_PATTERN = Regexp.union(*ESCAPE_ATTRS.keys)
+    def self.escape_attr_value(value)
+      value.to_s.gsub(ESCAPE_ATTRS_PATTERN){|c| ESCAPE_ATTRS[c] }
+    end
+
     def self.html_attrs(attrs="", ns=nil)
       return attrs.to_s if !attrs.kind_of?(::Hash)
 
@@ -17,16 +27,6 @@ module Deas::ErbTags
           " #{k_v.first}=\"#{escape_attr_value(k_v.last)}\""
         end
       end.join
-    end
-
-    ESCAPE_ATTRS = {
-      "&" => "&amp;",
-      "<" => "&lt;",
-      '"' => "&quot;"
-    }
-    ESCAPE_ATTRS_PATTERN = Regexp.union(*ESCAPE_ATTRS.keys)
-    def self.escape_attr_value(value)
-      value.to_s.gsub(ESCAPE_ATTRS_PATTERN){|c| ESCAPE_ATTRS[c] }
     end
 
   end

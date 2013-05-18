@@ -33,6 +33,8 @@ tag(:br)                             # => <br />
 tag(:h1, 'shizam', :title => "boom") # => <h1 title="boom">shizam</h1>
 ```
 
+**Note**: all tag methods take an option hash of html attributes (like above).  This use-case is assumed in the examples below.
+
 ### LinkTo
 
 TODO
