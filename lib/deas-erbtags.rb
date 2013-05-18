@@ -3,6 +3,7 @@ require 'deas-erbtags/utils'
 
 require 'deas-erbtags/tag'
 require 'deas-erbtags/link_to'
+require 'deas-erbtags/image_tag'
 
 module Deas; end
 module Deas::ErbTags
@@ -11,7 +12,7 @@ module Deas::ErbTags
 
   def self.included(receiver)
     receiver.class_eval do
-      include Tag, LinkTo
+      include Tag, LinkTo, ImageTag
     end
   end
 
