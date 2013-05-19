@@ -51,8 +51,14 @@ The `capture_tag` method is used to create tags with nested erb markup.  Like th
 ### `link_to`
 
 ```ruby
-link_to "http://google.com"           # => <a href="http://google.com">http://google.com</a>
-link_to "google", "http://google.com" # => <a href="http://google.com">google</a>
+link_to "http://google.com"
+  # => <a href="http://google.com">http://google.com</a>
+
+link_to "google", "http://google.com"
+  # => <a href="http://google.com">google</a>
+
+link_to("http://google.com"){ tag(:span, 'google') }
+  # => <a href="http://google.com">\n<span>google</span>\n</a>\n
 ```
 
 ### `mail_to`
