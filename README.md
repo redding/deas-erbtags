@@ -26,6 +26,10 @@ end
 
 ## Methods
 
+```ruby
+template_helpers(Deas::ErbTags::Tag)
+```
+
 All helper methods are based off of the basic `tag` method.  Tag calls should be invoked with `<%= ... -%>`:
 
 ```erb
@@ -36,6 +40,10 @@ All helper methods are based off of the basic `tag` method.  Tag calls should be
 **Note**: all tag methods take an option hash of html attributes (like above).  This use-case is assumed in the examples below.
 
 ### `capture_tag`
+
+```ruby
+template_helpers(Deas::ErbTags::Capture)
+```
 
 The `capture_tag` method is used to create tags with nested erb markup.  Like the `tag` method, it creates other tags with a similar API.  Unlike the `tag` method, it takes a block that contains nested markup and does not take content as an arg.  Capture tags should be invoked with the `<% ... %>`:
 
@@ -48,9 +56,27 @@ The `capture_tag` method is used to create tags with nested erb markup.  Like th
 
 **Note**: the convention is that if a tag method is called with a block, `capture_tag` will be used to generate the tag and it should be invoked with `<% ... %>`.
 
+### `capture_render`
+
+```ruby
+template_helpers(Deas::ErbTags::Capture)
+```
+
+The `capture_render` method is used to make Deas template `render` calls with nested erb markup.  It calls `render` with the given args, and captures its output.  Call it just as you would `render`, just invoke the call using `<% ... %>`.
+
+### `capture_render`
+
+```ruby
+template_helpers(Deas::ErbTags::Capture)
+```
+
+The `capture_partial` method is used to make Deas template `partial` calls with nested erb markup.  It calls `partial` with the given args, and captures its output.  Call it just as you would `partial`, just invoke the call using `<% ... %>`.
+
 ### `link_to`
 
 ```ruby
+template_helpers(Deas::ErbTags::LinkTo)
+
 link_to "http://google.com"
   # => <a href="http://google.com">http://google.com</a>
 
@@ -64,6 +90,8 @@ link_to("http://google.com"){ tag(:span, 'google') }
 ### `mail_to`
 
 ```ruby
+template_helpers(Deas::ErbTags::MailTo)
+
 mail_to "me@domain.com"
   # => <a href="mailto:me@domain.com">me@domain.com</a>
 
@@ -77,6 +105,8 @@ mail_to "me@domain.com", :disabled => true
 ### `image_tag`
 
 ```ruby
+template_helpers(Deas::ErbTags::ImageTag)
+
 image_tag '/logo.jpg'  #  => <img src="/logo.jpg" />
 ```
 
