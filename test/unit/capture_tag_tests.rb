@@ -22,18 +22,18 @@ module Deas::ErbTags::CaptureTag
         :id => 'outer'
       }) + "\n"
       buf_content_div = subject.capture_tag(:div, :id => 'outer') do
-        subject.capture_tag(:div){ subject._out_buf << 'inner' }
+        capture_tag(:div){ 'inner' }
       end
 
       assert_equal div_div, buf_content_div
     end
 
     should "create content by returning content from a given block" do
-      div_div = subject.tag(:div, "\n#{subject.tag(:div, "\ninner\n")}\n\n", {
+      div_div = subject.tag(:div, "\n#{subject.tag(:div, "inner")}\n", {
         :id => 'outer'
       }) + "\n"
       returned_content_div = subject.capture_tag(:div, :id => 'outer') do
-        subject.capture_tag(:div){ 'inner' }
+        tag(:div, 'inner')
       end
 
       assert_equal div_div, returned_content_div
