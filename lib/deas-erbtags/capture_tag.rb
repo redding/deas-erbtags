@@ -9,14 +9,14 @@ module Deas::ErbTags
 
     module Method
 
-      def capture_tag(name, *args)
+      def capture_tag(name, *args, &content)
         opts = args.last.kind_of?(::Hash) ? args.pop : {}
         outvar = self.sinatra_call.settings.erb[:outvar]
         captured_content = begin
           orig_outvar = instance_variable_get(outvar)
           instance_variable_set(outvar, "\n")
 
-          result = yield if block_given?
+          result = instance_eval(&content) if !content.nil?
 
           if instance_variable_get(outvar) == "\n"
             "\n#{result}"
