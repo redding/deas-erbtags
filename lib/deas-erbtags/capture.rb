@@ -42,6 +42,10 @@ module Deas::ErbTags
         self.capture tag(name, "#{captured_content}\n", opts)
       end
 
+      def capture_render(*args, &block)
+        self.capture self.render(*args, &block)
+      end
+
     end
 
   end

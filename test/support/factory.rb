@@ -21,6 +21,11 @@ module Factory
           })
         })
       end
+
+      def render(*args, &block)
+        [args, block].inspect
+      end
+
     end
 
     template_class.new
