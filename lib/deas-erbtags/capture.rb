@@ -17,6 +17,10 @@ module Deas::ErbTags
         instance_variable_get(self.erb_outvar_name)
       end
 
+      def capture(content)
+        self.erb_outvar << "#{content}\n"
+      end
+
       def capture_tag(name, *args, &content)
         opts = args.last.kind_of?(::Hash) ? args.pop : {}
         outvar = self.erb_outvar_name
@@ -35,8 +39,7 @@ module Deas::ErbTags
           instance_variable_set(outvar, orig_outvar)
         end
 
-        tag_markup = tag(name, "#{captured_content}\n", opts)
-        instance_variable_get(outvar) << "#{tag_markup}\n"
+        self.capture tag(name, "#{captured_content}\n", opts)
       end
 
     end
