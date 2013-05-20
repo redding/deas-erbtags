@@ -11,7 +11,7 @@ module Deas::ErbTags::CaptureTag
     end
     subject{ @template }
 
-    should have_imeth :capture_tag
+    should have_imeths :erb_outvar_name, :erb_outvar, :capture_tag
 
     should "include the `Tag` module" do
       assert_includes Deas::ErbTags::Tag, subject.class.included_modules
