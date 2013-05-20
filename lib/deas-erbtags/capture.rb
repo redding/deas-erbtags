@@ -46,6 +46,10 @@ module Deas::ErbTags
         self.capture self.render(*args, &block)
       end
 
+      def capture_partial(*args, &block)
+        self.capture self.partial(*args, &block)
+      end
+
     end
 
   end

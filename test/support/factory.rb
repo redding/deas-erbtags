@@ -26,6 +26,10 @@ module Factory
         [args, block].inspect
       end
 
+      def partial(*args, &block)
+        [args, block].inspect
+      end
+
     end
 
     template_class.new

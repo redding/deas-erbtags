@@ -12,7 +12,7 @@ module Deas::ErbTags::Capture
     subject{ @template }
 
     should have_imeths :erb_outvar_name, :erb_outvar
-    should have_imeths :capture, :capture_tag, :capture_render
+    should have_imeths :capture, :capture_tag, :capture_render, :capture_partial
 
     should "include the `Tag` module" do
       assert_includes Deas::ErbTags::Tag, subject.class.included_modules
@@ -58,6 +58,19 @@ module Deas::ErbTags::Capture
       assert_empty subject._out_buf
 
       cap_output = subject.capture_render('something')
+      assert_equal exp_output, cap_output
+      assert_equal exp_output, subject._out_buf
+    end
+
+  end
+
+  class CapturePartialTests < BaseTests
+
+    should "capture output from Deas' template `partial` call" do
+      exp_output = "#{subject.partial('something')}\n"
+      assert_empty subject._out_buf
+
+      cap_output = subject.capture_partial('something')
       assert_equal exp_output, cap_output
       assert_equal exp_output, subject._out_buf
     end
