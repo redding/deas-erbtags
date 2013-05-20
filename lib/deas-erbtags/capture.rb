@@ -1,7 +1,7 @@
 require 'deas-erbtags/tag'
 
 module Deas::ErbTags
-  module CaptureTag
+  module Capture
 
     def self.included(receiver)
       receiver.class_eval{ include Tag, Methods }

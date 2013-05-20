@@ -1,11 +1,11 @@
 require 'deas-erbtags/tag'
-require 'deas-erbtags/capture_tag'
+require 'deas-erbtags/capture'
 
 module Deas::ErbTags
   module LinkTo
 
     def self.included(receiver)
-      receiver.class_eval{ include Tag, CaptureTag, Method }
+      receiver.class_eval{ include Tag, Capture, Method }
     end
 
     module Method

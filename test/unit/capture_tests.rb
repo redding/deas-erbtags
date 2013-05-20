@@ -1,13 +1,13 @@
 require 'assert'
 require 'deas-erbtags/tag'
-require 'deas-erbtags/capture_tag'
+require 'deas-erbtags/capture'
 
-module Deas::ErbTags::CaptureTag
+module Deas::ErbTags::Capture
 
   class BaseTests < Assert::Context
-    desc "the `CaptureTag` module"
+    desc "the `Capture` module"
     setup do
-      @template = Factory.template(Deas::ErbTags::CaptureTag)
+      @template = Factory.template(Deas::ErbTags::Capture)
     end
     subject{ @template }
 

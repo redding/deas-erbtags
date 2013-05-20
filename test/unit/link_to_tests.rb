@@ -1,6 +1,6 @@
 require 'assert'
 require 'deas-erbtags/tag'
-require 'deas-erbtags/capture_tag'
+require 'deas-erbtags/capture'
 require 'deas-erbtags/link_to'
 
 module Deas::ErbTags::LinkTo
@@ -18,8 +18,8 @@ module Deas::ErbTags::LinkTo
       assert_includes Deas::ErbTags::Tag, subject.class.included_modules
     end
 
-    should "include the `CaptureTag` module" do
-      assert_includes Deas::ErbTags::CaptureTag, subject.class.included_modules
+    should "include the `Capture` module" do
+      assert_includes Deas::ErbTags::Capture, subject.class.included_modules
     end
 
     should "create an anchor tag with no content or href" do
