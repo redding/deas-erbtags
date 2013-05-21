@@ -31,8 +31,8 @@ module Deas::ErbTags
       end.join
     end
 
-    def self.insert_html_class(current_class_str, *classes_to_insert)
-      (Set.new(current_class_str.split(' ')) + classes_to_insert).sort.join(' ')
+    def self.insert_html_class(current, *to_insert)
+      (Set.new((current || '').split(' ')) + Set.new(to_insert)).sort.join(' ')
     end
 
   end

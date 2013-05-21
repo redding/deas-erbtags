@@ -14,10 +14,10 @@ module Deas::ErbTags::Utils
     end
 
     should "insert html class values into a given html class string" do
-      none = ''
+      none = nil
       assert_equal '', subject.insert_html_class(none)
       assert_equal 'a', subject.insert_html_class(none, 'a')
-      assert_equal 'a b', subject.insert_html_class(none, 'b', 'a')
+      assert_equal 'a b', subject.insert_html_class(none, 'b', 'a', 'a')
 
       single = 'z-class'
       assert_equal 'z-class', subject.insert_html_class(single)
