@@ -7,10 +7,27 @@ module Deas::ErbTags::Utils
     desc 'Deas::ErbTags::Helpers'
     subject { Deas::ErbTags::Utils }
 
-    should have_imeths :html_attrs, :escape_attr_value
+    should have_imeths :html_attrs, :escape_attr_value, :insert_html_class
 
     should "alias itself as `Deas::ErbTags::U`" do
       assert_same Deas::ErbTags::Utils, Deas::ErbTags::U
+    end
+
+    should "insert html class values into a given html class string" do
+      none = ''
+      assert_equal '', subject.insert_html_class(none)
+      assert_equal 'a', subject.insert_html_class(none, 'a')
+      assert_equal 'a b', subject.insert_html_class(none, 'b', 'a')
+
+      single = 'z-class'
+      assert_equal 'z-class', subject.insert_html_class(single)
+      assert_equal 'a z-class', subject.insert_html_class(single, 'a')
+      assert_equal 'a b z-class', subject.insert_html_class(single, 'a', 'b')
+
+      multi = 'z-class y-class'
+      assert_equal 'y-class z-class', subject.insert_html_class(multi)
+      assert_equal 'a y-class z-class', subject.insert_html_class(multi, 'a')
+      assert_equal 'a b y-class z-class', subject.insert_html_class(multi, 'a', 'b')
     end
 
   end
