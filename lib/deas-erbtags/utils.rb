@@ -1,3 +1,5 @@
+require 'set'
+
 module Deas; end
 module Deas::ErbTags
 
@@ -27,6 +29,10 @@ module Deas::ErbTags
           " #{k_v.first}=\"#{escape_attr_value(k_v.last)}\""
         end
       end.join
+    end
+
+    def self.insert_html_class(current_class_str, *classes_to_insert)
+      (Set.new(current_class_str.split(' ')) + classes_to_insert).sort.join(' ')
     end
 
   end
