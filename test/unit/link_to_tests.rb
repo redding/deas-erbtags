@@ -55,6 +55,17 @@ module Deas::ErbTags::LinkTo
       assert_equal exp, subject.link_to('www.google.com'){ span }
     end
 
+    should "create a link using a tag other than the anchor tag" do
+      href_content = subject.tag(:button, 'google', {:href => 'www.google.com'})
+
+      assert_equal href_content, subject.link_to('google', 'www.google.com', {
+        :tag => 'button'
+      })
+      assert_equal href_content, subject.link_to('google', 'www.google.com', {
+        'tag' => 'button'
+      })
+    end
+
   end
 
 end
