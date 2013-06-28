@@ -17,11 +17,12 @@ module Deas::ErbTags
           args.last
         ]
         opts.update(:href => href.to_s) if !href.nil?
+        tag = opts.delete(:tag) || opts.delete('tag') || :a
 
         if block_given?
-          capture_tag(:a, opts, &block)
+          capture_tag(tag, opts, &block)
         else
-          tag(:a, content || href, opts)
+          tag(tag, content || href, opts)
         end
       end
 
