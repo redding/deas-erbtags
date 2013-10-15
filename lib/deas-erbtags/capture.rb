@@ -17,18 +17,17 @@ module Deas::ErbTags
         instance_variable_get(self.erb_outvar_name)
       end
 
-      def capture(content)
+      def erb_write(content)
         self.erb_outvar << "#{content}\n"
       end
 
-      def capture_tag(name, *args, &content)
-        opts = args.last.kind_of?(::Hash) ? args.pop : {}
+      def capture(&content)
         outvar = self.erb_outvar_name
-        captured_content = begin
+        begin
           orig_outvar = self.erb_outvar
           instance_variable_set(outvar, "\n")
 
-          result = instance_eval(&content) if !content.nil?
+          result = instance_eval(&(content || Proc.new {}))
 
           if instance_variable_get(outvar) == "\n"
             "\n#{result}"
@@ -38,16 +37,19 @@ module Deas::ErbTags
         ensure
           instance_variable_set(outvar, orig_outvar)
         end
-
-        self.capture tag(name, "#{captured_content}\n", opts)
       end
 
-      def capture_render(*args, &block)
-        self.capture self.render(*args, &block)
+      def capture_tag(name, *args, &content)
+        opts = args.last.kind_of?(::Hash) ? args.pop : {}
+        self.erb_write tag(name, "#{capture(&content)}\n", opts)
       end
 
-      def capture_partial(*args, &block)
-        self.capture self.partial(*args, &block)
+      def capture_render(*args, &content)
+        self.erb_write self.render(*args, &Proc.new{ capture(&content) })
+      end
+
+      def capture_partial(*args, &content)
+        self.erb_write self.partial(*args, &Proc.new{ capture(&content) })
       end
 
     end
