@@ -64,7 +64,7 @@ template_helpers(Deas::ErbTags::Capture)
 
 The `capture_render` method is used to make Deas template `render` calls with nested erb markup.  It calls `render` with the given args, and captures its output.  Call it just as you would `render`, just invoke the call using `<% ... %>`.
 
-### `capture_render`
+### `capture_partial`
 
 ```ruby
 template_helpers(Deas::ErbTags::Capture)

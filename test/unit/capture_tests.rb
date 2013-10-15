@@ -4,14 +4,14 @@ require 'deas-erbtags/capture'
 
 module Deas::ErbTags::Capture
 
-  class BaseTests < Assert::Context
+  class UnitTests < Assert::Context
     desc "the `Capture` module"
     setup do
       @template = Factory.template(Deas::ErbTags::Capture)
     end
     subject{ @template }
 
-    should have_imeths :erb_outvar_name, :erb_outvar
+    should have_imeths :erb_outvar_name, :erb_outvar, :erb_write
     should have_imeths :capture, :capture_tag, :capture_render, :capture_partial
 
     should "include the `Tag` module" do
@@ -20,7 +20,7 @@ module Deas::ErbTags::Capture
 
   end
 
-  class CaptureTagTests < BaseTests
+  class CaptureTagTests < UnitTests
 
     should "create content by capturing content from a given block" do
       div_div = subject.tag(:div, "\n#{subject.tag(:div, "\ninner\n")}\n\n", {
@@ -51,28 +51,32 @@ module Deas::ErbTags::Capture
 
   end
 
-  class CaptureRenderTests < BaseTests
+  class CaptureRenderTests < UnitTests
 
     should "capture output from Deas' template `render` call" do
-      exp_output = "#{subject.render('something')}\n"
       assert_empty subject._out_buf
 
-      cap_output = subject.capture_render('something')
-      assert_equal exp_output, cap_output
-      assert_equal exp_output, subject._out_buf
+      content = Proc.new{ '_some_content_' }
+      exp_out = "#{subject.render('something', &Proc.new{ subject.capture(&content) })}\n"
+      cap_out = subject.capture_render('something') { '_some_content_' }
+
+      assert_equal exp_out, cap_out
+      assert_equal exp_out, subject._out_buf
     end
 
   end
 
-  class CapturePartialTests < BaseTests
+  class CapturePartialTests < UnitTests
 
     should "capture output from Deas' template `partial` call" do
-      exp_output = "#{subject.partial('something')}\n"
       assert_empty subject._out_buf
 
-      cap_output = subject.capture_partial('something')
-      assert_equal exp_output, cap_output
-      assert_equal exp_output, subject._out_buf
+      content = Proc.new{ }
+      exp_out = "#{subject.partial('something', &Proc.new{ subject.capture(&content) })}\n"
+      cap_out = subject.capture_partial('something')
+
+      assert_equal exp_out, cap_out
+      assert_equal exp_out, subject._out_buf
     end
 
   end
