@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description = %q{Deas template helpers for creating HTML tags using Erb.}
   gem.summary     = %q{Deas template helpers for creating HTML tags using Erb.}
   gem.homepage    = "http://github.com/redding/deas-erbtags"
+  gem.license     = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
