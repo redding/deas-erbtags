@@ -23,11 +23,13 @@ module Factory
       end
 
       def render(*args, &block)
-        [args, block].inspect
+        cap_content = "#{(block || Proc.new {}).call}"
+        RenderArgs.new(args, cap_content).inspect
       end
 
       def partial(*args, &block)
-        [args, block].inspect
+        cap_content = "#{(block || Proc.new {}).call}"
+        RenderArgs.new(args, cap_content).inspect
       end
 
     end
@@ -38,5 +40,7 @@ module Factory
   def self.html_attrs(opts)
     Deas::ErbTags::Utils.html_attrs(opts)
   end
+
+  RenderArgs = Struct.new(:args, :captured_content)
 
 end
